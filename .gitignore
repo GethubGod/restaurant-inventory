@@ -1,0 +1,52 @@
+# ==========================
+# 1. SYSTEM & GENERAL FILES
+# ==========================
+.DS_Store
+*.log
+
+# ==========================
+# 2. BACKEND (PYTHON & DJANGO)
+# ==========================
+# The "Sandbox" folder. It is huge and OS-specific. Never upload.
+backend/venv/
+venv/
+
+# Python compiled files (Junk created when Python runs)
+__pycache__/
+*.py[cod]
+
+# Your Local Database (Contains your test data - don't upload)
+backend/db.sqlite3
+*.sqlite3
+
+# SECURITY: The Secret Keys (CRITICAL)
+.env
+backend/.env
+
+# User Uploaded Images (These stay local)
+backend/media/
+
+# ==========================
+# 3. FRONTEND (NEXT.JS)
+# ==========================
+# The Libraries. Huge folder. We re-install them on the server.
+node_modules/
+frontend/node_modules/
+
+# The Build Folder (Created when you run the site)
+.next/
+frontend/.next/
+frontend/out/
+
+# Frontend Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel hosting settings
+.vercel
+
+# TypeScript definitions
+next-env.d.ts
+*.tsbuildinfo
