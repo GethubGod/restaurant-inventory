@@ -1,5 +1,7 @@
 import StoreSearch from './components/StoreSearch';
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://127.0.0.1:8000';
+
+// Fix 1: Changed 'https' to 'http' for the fallback (Localhost is usually not HTTPS)
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
 interface Product {
   id: number;
@@ -10,15 +12,30 @@ interface Product {
 }
 
 async function getProducts() {
-  const res = await fetch(`${API_URL}/api/products/`, {
-    cache: 'no-store',
-  });
-  if (!res.ok) throw new Error('Failed to fetch');
-  return res.json();
+  // Debug Log: This will show up in Vercel Logs so we know what URL is being used
+  console.log(`Attempting to fetch products from: ${API_URL}/api/products/`);
+
+  try {
+    const res = await fetch(`${API_URL}/api/products/`, {
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      console.error(`Backend returned error: ${res.status}`);
+      return []; // Return empty list on 404 or 500 error
+    }
+
+    return res.json();
+
+  } catch (error) {
+    // If Railway is down or URL is wrong, catch the error here
+    console.error("NETWORK ERROR:", error);
+    return []; // Return empty list so the app doesn't crash
+  }
 }
 
 export default async function Home() {
-  // 1. Fetch the data on the Server
+  // 1. Fetch the data (Now safe from crashing)
   const products = await getProducts();
 
   return (
@@ -39,9 +56,14 @@ export default async function Home() {
       </div>
 
       <div className="max-w-5xl mx-auto">
-        {/* 2. Hand the data to the Search Component */}
-        {/* This component will now handle drawing the Search Bar AND the Grid of items */}
+        {/* If products is empty, we can show a message, or just show the empty search bar */}
         <StoreSearch products={products} />
+        
+        {products.length === 0 && (
+          <p className="text-center text-gray-500 mt-10">
+            No products found. (Check Vercel Logs if this is unexpected)
+          </p>
+        )}
       </div>
 
     </main>
