@@ -33,8 +33,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['*']
-
-
+# This tells Django: "It is safe to accept login attempts from this URL"
+# IMPORTANT: You must include 'https://' at the start.
+CSRF_TRUSTED_ORIGINS = [
+    'https://restaurant-inventory-production-2226.up.railway.app',
+    'http://localhost:3000', 
+    'http://127.0.0.1:3000',
+]
 # Application definition
 
 INSTALLED_APPS = [
