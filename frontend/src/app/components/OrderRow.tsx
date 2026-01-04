@@ -22,7 +22,9 @@ export default function OrderRow({ order }: { order: Order }) {
     setIsUpdating(true);
 
     // Send the PATCH request to Django
-    const res = await fetch(`http://127.0.0.1:8000/api/orders/${order.id}/`, {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+
+    const res = await fetch(`${API_URL}/api/orders/${order.id}/`, {
       method: 'PATCH', // <--- "Update this specific part"
       headers: {
         'Content-Type': 'application/json',

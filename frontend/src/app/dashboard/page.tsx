@@ -8,8 +8,9 @@ interface Order {
   status: string;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 async function getOrders() {
-  const res = await fetch('http://127.0.0.1:8000/api/orders/', {
+  const res = await fetch(`${API_URL}/api/orders/`, {
     cache: 'no-store',
   });
   if (!res.ok) throw new Error('Failed to fetch orders');

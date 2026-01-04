@@ -1,4 +1,5 @@
 import StoreSearch from './components/StoreSearch';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://127.0.0.1:8000';
 
 interface Product {
   id: number;
@@ -9,7 +10,7 @@ interface Product {
 }
 
 async function getProducts() {
-  const res = await fetch('http://127.0.0.1:8000/api/products/', {
+  const res = await fetch(`${API_URL}/api/products/`, {
     cache: 'no-store',
   });
   if (!res.ok) throw new Error('Failed to fetch');
