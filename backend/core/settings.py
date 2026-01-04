@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+
+    'cloudinary',
 
     #third party apps
     'rest_framework', #helps build api
@@ -150,12 +154,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import os
 
-#base URL to serve files
-MEDIA_URL = '/media/'
-
-# The actaul folder on your computer where files sit
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+#tell Django to use Cloudinary for uploaded media
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Cors settings
 #allow port 3000 (frontend) to tallk to us
 CORS_ALLOWED_ORIGINS = [
@@ -165,3 +170,5 @@ CORS_ALLOWED_ORIGINS = [
 
 #sending email alerts (just prints in terminal rn)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+print("Cloud Name is:", os.environ.get('CLOUDINARY_CLOUD_NAME'))
