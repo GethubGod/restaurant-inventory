@@ -1,4 +1,5 @@
 "use client"; // <--- MAGIC WORD: Tells Next.js "This part runs in the browser"
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
 
