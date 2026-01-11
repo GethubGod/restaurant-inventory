@@ -40,16 +40,13 @@ export default function LoginPage() {
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 bg-white border border-gray-200 rounded-3xl shadow-xl overflow-hidden">
         <div className="hidden md:flex flex-col justify-between p-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
           <div>
-            <p className="text-sm opacity-80">Restaurant Inventory</p>
+            <p className="text-sm opacity-80">Babytuna Systems</p>
             <h2 className="text-3xl font-bold mt-2">Welcome back</h2>
             <p className="mt-4 text-sm opacity-90">
               Sign in to place orders, track fulfillment, and manage locations.
             </p>
           </div>
           <div className="space-y-2 text-sm opacity-90">
-            <p>✓ Secure access with JWT</p>
-            <p>✓ Location-aware ordering</p>
-            <p>✓ Real-time status updates</p>
           </div>
         </div>
 
