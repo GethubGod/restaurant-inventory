@@ -10,6 +10,7 @@ import StatCard from "../components/StatCard";
 import SuggestionCard from "../components/SuggestionCard";
 import TabSwitcher from "../components/TabSwitcher";
 import { OrderRecord, Product } from "../types";
+import { useRouter } from "next/navigation";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -31,11 +32,20 @@ function groupBySource(data: OrderRecord[]) {
 }
 
 export default function FulfillmentPage() {
+  
   const [activeTab, setActiveTab] = useState<string>("all");
   const [orders, setOrders] = useState<OrderRecord[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { addItem } = useCart();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (!token) {
+      router.push("/login");
+    }
+  }, [router]);
 
   useEffect(() => {
     const token = Cookies.get("token");
