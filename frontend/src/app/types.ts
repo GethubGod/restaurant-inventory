@@ -41,6 +41,18 @@ export interface Suggestion {
   location: string;
 }
 
+export interface OrderItem {
+  id: number;
+  item: string;
+  qty: number;
+  source: string;
+  location: string;
+  orderedBy: string;
+  status: OrderStatus;
+  date: string;
+  urgency: Urgency;
+}
+
 export interface LocationOption {
   id: string;
   name: string;

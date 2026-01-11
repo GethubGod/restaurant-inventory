@@ -77,10 +77,10 @@ export const orders: OrderItem[] = [
 ];
 
 export const suggestions: Suggestion[] = [
-  { id: 201, item: "Roma Tomatoes", source: "Restaurant Depot", reason: "Ordered weekly" },
-  { id: 202, item: "Mozzarella (Shredded)", source: "Costco", reason: "High usage last week" },
-  { id: 203, item: "Napkins (10k)", source: "Restaurant Depot", reason: "Low shelf count" },
-  { id: 204, item: "Sparkling Water (24pk)", source: "Costco", reason: "Popular add-on" },
+  { id: 201, item: "Roma Tomatoes", source: "Restaurant Depot", reason: "Ordered weekly", productId: 201, location: "Downtown" },
+  { id: 202, item: "Mozzarella (Shredded)", source: "Costco", reason: "High usage last week", productId: 202, location: "Uptown" },
+  { id: 203, item: "Napkins (10k)", source: "Restaurant Depot", reason: "Low shelf count", productId: 203, location: "Downtown" },
+  { id: 204, item: "Sparkling Water (24pk)", source: "Costco", reason: "Popular add-on", productId: 204, location: "Harbor" },
 ];
 
 export const categories: Category[] = [
@@ -93,7 +93,7 @@ export const categories: Category[] = [
 ];
 
 export const recentOrders: RecentOrder[] = [
-  { id: 301, item: "Ketchup (2ct)", qty: 2, location: "Downtown", source: "Costco", date: "2025-02-13T10:00:00Z" },
-  { id: 302, item: "To-go Lids", qty: 1, location: "Uptown", source: "Restaurant Depot", date: "2025-02-12T12:00:00Z" },
-  { id: 303, item: "Basmati Rice", qty: 3, location: "Downtown", source: "Restaurant Depot", date: "2025-02-11T08:00:00Z" },
+  { id: 301, item: "Ketchup (2ct)", qty: 2, location: "Downtown", source: "Costco", date: "2025-02-13T10:00:00Z", productId: 301 },
+  { id: 302, item: "To-go Lids", qty: 1, location: "Uptown", source: "Restaurant Depot", date: "2025-02-12T12:00:00Z", productId: 302 },
+  { id: 303, item: "Basmati Rice", qty: 3, location: "Downtown", source: "Restaurant Depot", date: "2025-02-11T08:00:00Z", productId: 303 },
 ];
